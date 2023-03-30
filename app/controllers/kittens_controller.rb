@@ -14,8 +14,10 @@ class KittensController < ApplicationController
 
     if @kitten.save
       redirect_to @kitten
+      success_message("created")
     else
       render :new, status: :unprocessable_entity
+      error_message
     end
   end
 
@@ -26,14 +28,17 @@ class KittensController < ApplicationController
   def update
     if @kitten.update(kitten_params)
       redirect_to @kitten
+      success_message("updated")
     else
       render :edit, status: :unprocessable_entity
+      error_message
     end
   end
 
   def destroy
     @kitten.destroy
     redirect_to '/kittens'
+    success_message("deleted")
   end
 
   private
@@ -43,5 +48,13 @@ class KittensController < ApplicationController
 
     def set_kitten
       @kitten = Kitten.find(params[:id])
+    end
+
+    def success_message(message)
+      flash[:sucess] = "You've successfully #{message} your kitten!"
+    end
+
+    def error_message
+      flash[:error].now = "Check your form dum dum"
     end
 end
