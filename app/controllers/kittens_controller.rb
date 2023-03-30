@@ -16,8 +16,8 @@ class KittensController < ApplicationController
       redirect_to @kitten
       success_message("created")
     else
-      render :new, status: :unprocessable_entity
       error_message
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,8 +30,8 @@ class KittensController < ApplicationController
       redirect_to @kitten
       success_message("updated")
     else
-      render :edit, status: :unprocessable_entity
       error_message
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -55,6 +55,6 @@ class KittensController < ApplicationController
     end
 
     def error_message
-      flash[:error].now = "Check your form dum dum"
+      flash.now[:error] = "Check your form dum dum"
     end
 end
