@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get '/kittens', to: 'kittens#index'
+  get '/kittens/new', to: 'kittens#new'
+  post '/kittens', to: 'kittens#create'
+  get 'kittens/:id', to: 'kittens#show'
+  get 'kittens/:id/edit', to: 'kittens#edit'
+  patch 'kittens/;id', to: 'kittens#update'
+  delete 'kittens/:id', to: 'kittens#destroy'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root "kittens#index"
 end
