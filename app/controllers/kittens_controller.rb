@@ -13,7 +13,7 @@ class KittensController < ApplicationController
     @kitten = Kitten.new(kitten_params)
 
     if @kitten.save
-      redirect_to @kitten
+      redirect_to action: "show", id: @kitten.id
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class KittensController < ApplicationController
 
   def update
     if @kitten.update(kitten_params)
-      redirect_to @kitten
+      redirect_to action: "show", id: @kitten.id
     else
       render :edit, status: :unprocessable_entity
     end
