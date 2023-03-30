@@ -5,3 +5,5 @@
     <li><strong>Cuteness:</strong> <%= @kitten.cuteness %></li>
     <li><strong>Softness:</strong> <%= @kitten.softness %></li>
 </ul>
+
+<%= link_to "Delete", kitten_path(@kitten.id), data: { turbo_method: :delete } %>
